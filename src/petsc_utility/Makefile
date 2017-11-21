@@ -5,6 +5,9 @@ CC 	 = g++ -L.
 CFLAGS 	 = -I.	
 CPPFLAGS = -std=c++11 -O3 
 
+PETSC_ARCH= arch-linux2-c-debug
+PETSC_DIR=/home/maschm/bachelor/mlsvm/petsc
+
 include ${PETSC_DIR}/lib/petsc/conf/variables
 include ${PETSC_DIR}/lib/petsc/conf/rules
 include ${PETSC_DIR}/lib/petsc/conf/test

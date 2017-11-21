@@ -16,17 +16,8 @@ int main(int argc, char **argv)
     std::string str_nn_distance_type {std::to_string(Config_params::getInstance()->get_nn_distance_type())};
     std::string str_NN_params {" " + str_NN + " "+ str_nn_distance_type} ;
 
-    const char* env_p = std::getenv("PY_PATH");
-    if(env_p == NULL ){
-        printf("\n[Main] the PY_PATH is not defined. Exit(1)!\n\n");
-        printf("Please define the PY_PATH to the python location. For more information, read the README file\n\n");
-        exit(1);
-    }
-    std::string py_path= env_p;
-
     if(Config_params::getInstance()->get_nn_number_of_classes() == 1){
-        std::string sh_command = py_path +"/python ./scripts/flann.py " +
-                Config_params::getInstance()->get_single_norm_data_f_name() + str_NN_params;
+        std::string sh_command = "python2 ./scripts/flann.py "+ Config_params::getInstance()->get_single_norm_data_f_name() + str_NN_params;
         /* ------------------------- Run FLANN ---------------------------- */
         std::cout << "[Main] sh_command for 1 class:" << sh_command << std::endl;
         system(sh_command.c_str());
@@ -38,10 +29,8 @@ int main(int argc, char **argv)
         kf.divide_data(true);   //true: export the divided data into files
         t_kf.stop_timer("[Main] reading and deviding data and writing to files in k-fold class");
 
-        std::string min_command = py_path +"/python ./scripts/flann.py " +
-                Config_params::getInstance()->get_p_norm_data_f_name()+ str_NN_params;
-        std::string maj_command = py_path +"/python ./scripts/flann.py " +
-                Config_params::getInstance()->get_n_norm_data_f_name()+ str_NN_params;
+        std::string min_command = "python2 ./scripts/flann.py "+ Config_params::getInstance()->get_p_norm_data_f_name()+ str_NN_params;
+        std::string maj_command = "python2 ./scripts/flann.py "+ Config_params::getInstance()->get_n_norm_data_f_name()+ str_NN_params;
         /* ------------------------- Run FLANN ---------------------------- */
         ETimer t_flann_min;
         std::cout << "[Main] python min_command:" << min_command << std::endl;

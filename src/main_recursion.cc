@@ -46,6 +46,8 @@ solution MainRecursion::main(Mat& p_data, Mat& m_P_p_f, Mat& p_WA, Vec& p_vol,
         // The current level is used to set the vector size and initialize it
         Config_params::getInstance()->set_levels_models_info();
 
+        ETimer t;
+
         solution sol_coarsest;
         Refinement rf;
 #if dbl_MR_main >= 3
@@ -58,11 +60,17 @@ solution MainRecursion::main(Mat& p_data, Mat& m_P_p_f, Mat& p_WA, Vec& p_vol,
         std::cout << "[MR][main] DEBUG level id after calling rf.process_coarsest_level:" +
                      std::to_string(Config_params::getInstance()->get_main_current_level_id()) << std::endl;
 #endif
+
+        t.stop_timer("[MR][main] initial training: ");
+
         // free resources
         MatDestroy(&p_data);
         MatDestroy(&n_data);
         MatDestroy(&p_WA);
         MatDestroy(&n_WA);
+
+        exit(0);
+
 
 #if dbl_MR_main >= 3
         std::cout << "[MR][main]{coarsest} before returning the sol_coarsest C:"<< sol_coarsest.C <<
