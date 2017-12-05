@@ -7,7 +7,7 @@
 #include <chrono>
 #include "petscvec.h"
 
-#define verbose false
+#define verbose true
 
 Config_params* Config_params::getInstance() {
     if ( !instance ) instance = new Config_params;
@@ -630,7 +630,7 @@ void Config_params::print_summary(const summary& summary_in, std::string caller_
            summary_in.perf.at(TN), summary_in.perf.at(FP), summary_in.perf.at(FN));
 
     if(summary_in.C && summary_in.gamma)
-        printf(", C:%.2f, Gamma:%.4f", summary_in.C, summary_in.gamma);
+            printf(", log C:%.2f, log Gamma:%.4f", log(summary_in.C)/log(2), log(summary_in.gamma)/log(2));
 
     if(summary_in.num_SV_p || summary_in.num_SV_n)
         printf(", nSV+:%d, nSV-:%d", summary_in.num_SV_p, summary_in.num_SV_n);
