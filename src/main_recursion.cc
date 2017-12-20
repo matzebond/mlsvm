@@ -69,9 +69,6 @@ solution MainRecursion::main(Mat& p_data, Mat& m_P_p_f, Mat& p_WA, Vec& p_vol,
         MatDestroy(&p_WA);
         MatDestroy(&n_WA);
 
-        exit(0);
-
-
 #if dbl_MR_main >= 3
         std::cout << "[MR][main]{coarsest} before returning the sol_coarsest C:"<< sol_coarsest.C <<
         ", nSV+:"<< sol_coarsest.p_index.size() << ", nSV-:"<< sol_coarsest.n_index.size() << std::endl;
@@ -193,6 +190,8 @@ solution MainRecursion::main(Mat& p_data, Mat& m_P_p_f, Mat& p_WA, Vec& p_vol,
         printf("\n         ================================================================\n");
         printf("[MR] coarse solution C:%g, G:%g, nSV+:%lu \n\n", sol_coarser.C, sol_coarser.gamma, sol_coarser.p_index.size());
 #endif
+        return sol_coarser;
+
         solution sol_refine;
         Refinement rf;
 
