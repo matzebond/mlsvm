@@ -55,10 +55,10 @@
 #define dbl_MR_calc_performance     0           // 0 Default
 //---- Refinement ----
 #define dbl_RF_main                 1           // 1 Default
-#define dbl_RF_INFO                 0           // 1 Default    //release 0
-#define dbl_RF_main_with_partition  0           // 1 Default, 3 report steps        //release 0
-#define dbl_RF_main_no_partition    0           // 1 Default                        //release 0
-#define dbl_RF_FSN                  0           // 1 Default find_SV_neighbors      //release 0
+#define dbl_RF_INFO                 1           // 1 Default    //release 0
+#define dbl_RF_main_with_partition  1           // 1 Default, 3 report steps        //release 0
+#define dbl_RF_main_no_partition    1           // 1 Default                        //release 0
+#define dbl_RF_FSN                  1           // 1 Default find_SV_neighbors      //release 0
 #define dbl_RF_ABM                  0           // 0 Default, 3 report different levels results after sort, 5 report before and after sort
 
 //---- Partitioning ----

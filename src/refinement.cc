@@ -78,7 +78,8 @@ solution Refinement::main(Mat& m_data_p, Mat& m_P_p, Vec& v_vol_p, Mat&m_WA_p,
      *  m_neigh_WA: only specific rows and columns
      *  v_nei_vol: volumes for the points in the m_neigh_WA
      */
-    if( (num_neigh_row_p_ + num_neigh_row_n_)  > Config_params::getInstance()->get_pr_start_partitioning() ){
+    // TODO disabled for testing purpose
+    if( (num_neigh_row_p_ + num_neigh_row_n_)  > Config_params::getInstance()->get_pr_start_partitioning() && false){
         // - - - - get the neighbors data points - - - -
         Mat m_neigh_WA_p, m_neigh_WA_n;
         Vec v_neigh_Vol_p, v_neigh_Vol_n;

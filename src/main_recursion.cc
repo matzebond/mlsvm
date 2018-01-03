@@ -190,7 +190,7 @@ solution MainRecursion::main(Mat& p_data, Mat& m_P_p_f, Mat& p_WA, Vec& p_vol,
         printf("\n         ================================================================\n");
         printf("[MR] coarse solution C:%g, G:%g, nSV+:%lu \n\n", sol_coarser.C, sol_coarser.gamma, sol_coarser.p_index.size());
 #endif
-        return sol_coarser;
+        // return sol_coarser;
 
         solution sol_refine;
         Refinement rf;

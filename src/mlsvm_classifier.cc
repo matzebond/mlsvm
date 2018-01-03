@@ -87,10 +87,9 @@ int main(int argc, char **argv)
 
                 Config_params::getInstance()->set_timer_end_refinement();
 
-                /* TODO add when using refinement
                 Refinement rf;
                 rf.add_best_model(v_ref_results);
-                */
+
                 //free the matrices
                 MatDestroy(&m_min_train_data);
                 MatDestroy(&m_maj_train_data);
