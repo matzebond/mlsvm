@@ -54,7 +54,7 @@
 
 #define dbl_MR_calc_performance     0           // 0 Default
 //---- Refinement ----
-#define dbl_RF_main                 1           // 1 Default
+#define dbl_RF_main                 5           // 1 Default
 #define dbl_RF_INFO                 1           // 1 Default    //release 0
 #define dbl_RF_main_with_partition  1           // 1 Default, 3 report steps        //release 0
 #define dbl_RF_main_no_partition    1           // 1 Default                        //release 0
@@ -75,7 +75,7 @@
 #define dbl_PR_CPM                  0           // 0 Default    //calc_performance_measure  5 prints final predicted label
 //---- Model Selection ----
 #define dbl_MS_UD                   1           // 1 Default
-#define dbl_MS_UDSepVal             1           // 1 Default    //release 0
+#define dbl_MS_UDSepVal             3           // 1 Default    //release 0
 #define dbl_MS_UDIB                 1           // 1 Default
 #define dbl_MS_combine_test_data    0
 #define dbl_MS_ud_param_generator   0           // 0 Default, 3 shows new parameters

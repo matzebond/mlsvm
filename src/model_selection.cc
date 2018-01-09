@@ -554,13 +554,13 @@ void ModelSelection::uniform_design_separate_validation(Mat& m_train_data_p, Vec
         sv.predict_validation_data(m_VD_p, m_VD_n, current_summary, solver_id);
 //            sv.free_solver("[MS][UDSepVal] ");   //free the solver
         v_summary.push_back(current_summary);
-#if dbl_MS_UDSepVal >= 1
+#if dbl_MS_UDSepVal >= 3
         Config_params::getInstance()->print_summary(current_summary,"[MS][UDSepVal]", level, i, stage);
 #endif
         ++solver_id;
     }
     int best_1st_stage = select_best_model(v_summary,level,1);
-#if dbl_MS_UDSepVal >= 3
+#if dbl_MS_UDSepVal >= 1
     std::cout <<"[MS][UDSepVal] best_1st_stage:"<< best_1st_stage << " nSV+:" << v_summary[best_1st_stage].num_SV_p
                                                 <<", paramsC:"<< v_summary[best_1st_stage].C << std::endl;
 #endif
@@ -587,7 +587,7 @@ void ModelSelection::uniform_design_separate_validation(Mat& m_train_data_p, Vec
         v_solver.push_back(sv);
 //            sv.free_solver("[MS][UDSepVal] ");   //free the solver
         v_summary.push_back(current_summary);
-#if dbl_MS_UDSepVal >= 1
+#if dbl_MS_UDSepVal >= 3
         Config_params::getInstance()->print_summary(current_summary,"[MS][UDSepVal]", level, i, stage);
 #endif
         ++solver_id;
@@ -833,14 +833,24 @@ void ModelSelection::uniform_design_index_base_separate_validation(Mat& p_data, 
         sv.predict_validation_data(m_VD_p, m_VD_n, current_summary, solver_id);     // The normal predict method for full matrix is useful rather than index base methods
 //        std::cout << "[MS][UDIBSepVal] after predicting the validation data" << std::endl;
         v_summary.push_back(current_summary);
+#if dbl_MS_UDSepVal >= 3
+        Config_params::getInstance()->print_summary(current_summary,"[MS][UDIBSepVal]", level, i, stage);
+#endif
         ++solver_id;
 //        exit(1);
     }
     int best_1st_stage = select_best_model(v_summary,level,1);
-
+#if dbl_MS_UDSepVal >= 1
+    std::cout <<"[MS][UDIBSepVal] best_1st_stage:"<< best_1st_stage << " nSV+:" << v_summary[best_1st_stage].num_SV_p
+              <<", paramsC:"<< v_summary[best_1st_stage].C << std::endl;
+#endif
 
     // - - - - 2nd stage - - - -
     stage = 2 ;
+#if dbl_MS_UDSepVal >= 1
+    printf("[MS][UDIBSepVal] ------ stage:%d, level:%d------ \n", stage, level);
+    printf("[MS][UDIBSepVal] 2nd stage model selection center log C:%g, log G:%g\n",log(ud_params_st_1[best_1st_stage].C)/log(2) , log(ud_params_st_1[best_1st_stage].G)/log(2));
+#endif
     std::vector<ud_point> ud_params_st_2;
     ud_params_st_2 = ud_param_generator(2,true, ud_params_st_1[best_1st_stage].C , ud_params_st_1[best_1st_stage].G);
 
@@ -857,10 +867,17 @@ void ModelSelection::uniform_design_index_base_separate_validation(Mat& p_data, 
         sv.predict_validation_data(m_VD_p, m_VD_n, current_summary, solver_id);     // The normal predict method for full matrix is useful rather than index base methods
         v_solver.push_back(sv);
         v_summary.push_back(current_summary);
+#if dbl_MS_UDSepVal >= 3
+        Config_params::getInstance()->print_summary(current_summary,"[MS][UDSepVal]", level, i, stage);
+#endif
         ++solver_id;
     }
 
     int best_of_all =  select_best_model(v_summary,level,2);
+#if dbl_MS_UDSepVal >= 1
+    printf("[MS][UDIBSepVal] best of both stage of UD is: (iter :%d)\n", best_of_all);
+    Config_params::getInstance()->print_summary(v_summary[best_of_all],"[MS][UDSepVal] Validation Data", level, -1, stage);
+#endif
     t_sv_ps.stop_timer("[MS][UDIBSepVal] model training");
 
     // - - - - - - - - prepare the solution for refinement - - - - - - - - -
