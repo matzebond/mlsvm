@@ -1,16 +1,25 @@
 ALL: mlsvm_classifier
+
 CC	 = g++ -L.
 CFLAGS	 = -I.
-CPPFLAGS = -std=c++11 -g3 -O3       #-O3 -W -Wall -Weffc++ -Wextra -pedantic -O3
+CPPFLAGS = -std=c++11 -O3       #-g3 -O3 -W -Wall -Weffc++ -Wextra -pedantic
 LOCDIR   = .
 MAIN	 = mlsvm_classifier.cc
 MANSEC   = Mat
 
-LIBS= -lpugixml -lm -lmetis -fopenmp -lasan
-LIBFLANN= /usr/lib/libflann_cpp_s.a
+INCFLANN=/home/schmitt/mlsvm/flann/src/cpp
+LIBFLANN=/home/schmitt/mlsvm/flann/build/lib/libflann_cpp_s.a
 
-PETSC_ARCH= arch-linux2-c-debug
-PETSC_DIR=/home/maschm/bachelor/mlsvm/petsc
+INCMETIS=/home/schmitt/mlsvm/metis/include
+LIBMETIS=/home/schmitt/mlsvm/metis/build/Linux-x86_64/libmetis
+
+LIBS= -lpugixml -lm -fopenmp -lasan -L${LIBMETIS} -lmetis
+INCLUDE = -I. -I${INCFLANN} -I${INCMETIS}
+CFLAGS += ${INCLUDE}
+CPPFLAGS += ${INCLUDE}
+
+PETSC_ARCH=arch-linux2-c-debug
+PETSC_DIR=/home/schmitt/mlsvm/petsc
 
 MLSVM_SRCS = pugixml.cc etimer.cc common_funcs.cc OptionParser.cc k_fold.cc svm_weighted.cc config_params.cc model_selection.cc solver.cc partitioning.cc refinement.cc  main_recursion.cc coarsening.cc loader.cc ds_node.cc ds_graph.cc mlsvm_classifier.cc
 MLSVM_OBJS = $(MLSVM_SRCS:.cc=.o)
@@ -79,7 +88,7 @@ main_libs_inst:  etimer.o common_funcs.o OptionParser.o k_fold.o svm.o config_pa
 	${RM} main.o
 
 mlsvm_classifier: $(MLSVM_OBJS) chkopts
-	-${CLINKER} $(MLSVM_OBJS)  ${PETSC_MAT_LIB} -o mlsvm_classifier -lmetis
+	-${CLINKER} $(MLSVM_OBJS)  ${PETSC_MAT_LIB} -L${LIBMETIS} -lmetis -o mlsvm_classifier
 	${RM} mlsvm_classifier.o
 
 main_sl: $(SLSVM_OBJS) chkopts			# single level (no multi level which means no v-cycle)
