@@ -570,7 +570,7 @@ void ModelSelection::uniform_design_separate_validation(Mat& m_train_data_p, Vec
     stage = 2 ;
 #if dbl_MS_UDSepVal >= 1
     printf("[MS][UDSepVal] ------ stage:%d, level:%d------ \n", stage, level);
-    printf("[MS][UDSepVal] 2nd stage model selection center C:%g, G:%g\n",ud_params_st_1[best_1st_stage].C , ud_params_st_1[best_1st_stage].G);
+    printf("[MS][UDSepVal] 2nd stage model selection center log C:%g, log G:%g\n",log(ud_params_st_1[best_1st_stage].C)/log(2) , log(ud_params_st_1[best_1st_stage].G)/log(2));
 #endif
     std::vector<ud_point> ud_params_st_2;
 

@@ -38,13 +38,13 @@
 #define dbl_LD_CD                   0           // 0 Default, 3 print raw and calculated distance
 #define dbl_LD_LNDS                 0           // 0 Default, 5 print size of data
 //---- Coarsening ----
-#define dbl_CO_calcP                1           // 1 normal with #edges                 //release 0
+#define dbl_CO_calcP                0           // 1 normal with #edges                 //release 0
 #define dbl_CO_vNorm                0           // calculate the normalized vector
 #define dbl_CO_cInv                 0           // calculate the inverse vector
 #define dbl_CO_CAD                  0           // 0 Default [Calculate Aggregate data]
 #define dbl_CO_calc_WA_c            0
 #define dbl_CO_calc_coarse_vol      0
-#define dbl_CO_FWE                  3           // filter weak edges (3 prints # filtered edges) //release 0
+#define dbl_CO_FWE                  0           // filter weak edges (3 prints # filtered edges) //release 0
 //---- MainRecursion (Refinement) ----
 #define dbl_MR_main                 1           // 1 Default 3 level info //release 0
 #define debug_level_main_rec        0           // 0 Default
@@ -62,13 +62,13 @@
 #define dbl_RF_ABM                  0           // 0 Default, 3 report different levels results after sort, 5 report before and after sort
 
 //---- Partitioning ----
-#define dbl_PR_get_parts            5           // 0 Default (Metis), 1 #parts, 5 report the metis response, 7 print parts
+#define dbl_PR_get_parts            0           // 0 Default (Metis), 1 #parts, 5 report the metis response, 7 print parts
 #define dbl_PR_SEW                  0           // 0 Default, 9 prints the adjwgt
 #define dbl_PR_single_part_matrix   0           // 0 Default
 #define dbl_PR_CSC                  0           // 0 Default    //calc_single_center
-#define dbl_PR_calc_center          1           // 0 Default
+#define dbl_PR_calc_center          0           // 0 Default
 #define dbl_PR_calc_distances       0           // 0 Default
-#define dbl_PR_find_groups          3           // 0 Default    5 prints final groups
+#define dbl_PR_find_groups          0           // 0 Default    5 prints final groups
 #define dbl_PR_CAC                  0           // 0 Default    //calc_avg_center
 #define dbl_PR_CCV                  0           // 0 Default    //calc_center_volume
 #define dbl_PR_CGI                  0           // 0 Default

@@ -57,10 +57,12 @@ int main(int argc, char **argv)
                 // r is the current experiment, i is the current iteration (k-fold id)
                 Config_params::getInstance()->set_current_iter_file_names(r, i);
 
+                ETimer t_kf;
                 kf.prepare_data_for_iteration(i,num_kf_iter_,m_min_full_data,m_min_train_data,
                                               m_min_full_NN_indices,m_min_full_NN_dists,m_min_WA,v_p_vol
                                               ,m_maj_full_data,m_maj_train_data,m_maj_full_NN_indices,
                                               m_maj_full_NN_dists,m_maj_WA,v_n_vol);
+                t_kf.stop_timer("[KF]", "prepare_data_for_iteration");
 
             // bypass the classification to export the cross-validation training data (comparison with other solvers)
             #if dbl_exp_train_data == 0
