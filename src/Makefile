@@ -7,19 +7,20 @@ LOCDIR   = .
 MAIN	 = mlsvm_classifier.cc
 MANSEC   = Mat
 
-INCFLANN=/home/schmitt/mlsvm/flann/src/cpp
-LIBFLANN=/home/schmitt/mlsvm/flann/build/lib/libflann_cpp_s.a
+INCFLANN=/home/maschm/bachelor/mlsvm/flann/src/cpp
+LIBFLANN=/home/maschm/bachelor/mlsvm/flann/build/lib/libflann_cpp_s.a
 
-INCMETIS=/home/schmitt/mlsvm/metis/include
-LIBMETIS=/home/schmitt/mlsvm/metis/build/Linux-x86_64/libmetis
+INCMETIS=/home/maschm/bachelor/mlsvm/metis/include
+LIBMETIS=/home/maschm/bachelor/mlsvm/metis/build/Linux-x86_64/libmetis
 
 LIBS= -lpugixml -lm -fopenmp -lasan -L${LIBMETIS} -lmetis
 INCLUDE = -I. -I${INCFLANN} -I${INCMETIS}
 CFLAGS += ${INCLUDE}
 CPPFLAGS += ${INCLUDE}
 
-PETSC_ARCH=arch-linux2-c-debug
-PETSC_DIR=/home/schmitt/mlsvm/petsc
+PETSC_ARCH=arch-linux2-c-opt
+PETSC_DIR=/home/maschm/bachelor/mlsvm/petsc
+
 
 MLSVM_SRCS = pugixml.cc etimer.cc common_funcs.cc OptionParser.cc k_fold.cc svm_weighted.cc config_params.cc model_selection.cc solver.cc partitioning.cc refinement.cc  main_recursion.cc coarsening.cc loader.cc ds_node.cc ds_graph.cc mlsvm_classifier.cc
 MLSVM_OBJS = $(MLSVM_SRCS:.cc=.o)
