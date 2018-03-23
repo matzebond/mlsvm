@@ -16,7 +16,7 @@
 
 #define timer_print                 1      // 1: Active , 0: Disable
 //Export the matrices or not
-#define debug_export                1      // 1: Export , 0: Not Export
+#define debug_export                0      // 1: Export , 0: Not Export
 
 #define debug_level                 0
 //---- kFold ----
@@ -46,15 +46,15 @@
 #define dbl_CO_calc_coarse_vol      0
 #define dbl_CO_FWE                  0           // filter weak edges (3 prints # filtered edges) //release 0
 //---- MainRecursion (Refinement) ----
-#define dbl_MR_main                 1           // 1 Default 3 level info //release 0
+#define dbl_MR_main                 0           // 1 Default 3 level info //release 0
 #define debug_level_main_rec        0           // 0 Default
-#define dbl_MR_refinement           1           // 1 Default
+#define dbl_MR_refinement           0           // 1 Default
 
 
 
 #define dbl_MR_calc_performance     0           // 0 Default
 //---- Refinement ----
-#define dbl_RF_main                 1           // 1 Default
+#define dbl_RF_main                 0           // 1 Default
 #define dbl_RF_INFO                 0           // 1 Default    //release 0
 #define dbl_RF_main_with_partition  0           // 1 Default, 3 report steps        //release 0
 #define dbl_RF_main_no_partition    0           // 1 Default                        //release 0
